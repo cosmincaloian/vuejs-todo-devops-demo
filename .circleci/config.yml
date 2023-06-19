@@ -56,6 +56,7 @@ jobs:
           name: Build front-end
           command: |
             cd client
+            npm install -g npm@9.7.1
             npm install
             npm run build
       - save_cache:
@@ -75,6 +76,7 @@ jobs:
           name: Test
           command: |
             cd client
+            npm install -g npm@9.7.1
             npm install
             npm run test:unit
       - ms-teams-notifier/report:
@@ -108,7 +110,8 @@ jobs:
       - run:
           name: Scan
           command: |
-            cd frontend
+            cd client
+            npm install -g npm@9.7.1
             npm install
             npm audit --audit-level=critical
       - ms-teams-notifier/report:
